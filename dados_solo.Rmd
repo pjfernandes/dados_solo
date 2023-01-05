@@ -12,7 +12,7 @@ library(GFD)
 ```
 
 ## Shapiro Test (dados não paramétricos)
-```{r cars, echo=FALSE}
+```{r, fig.width=15, fig.height=10, echo=FALSE}
 par(mfrow=c(4,5))
 
 for (col in 4:ncol(df)) {
@@ -24,10 +24,10 @@ for (col in 4:ncol(df)) {
 ```
 
 ## Boxplot e testes
-```{r, echo=FALSE}
+```{r, fig.width=15, fig.height=6, echo=FALSE}
 for (col in 4:ncol(df)) {
   if (col == 4) {
-    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"] * df[,"Coleta"], main=paste(names(df)[col]))
+    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"] * df[,"Coleta"], main=paste(names(df)[col]),las=2,xlab="")
     print(paste(names(df)[col]))
     print(kruskal.test(df[,col]~df[,"Áreas"]))
     print(kruskal.test(df[,col]~df[,"Prof"]))

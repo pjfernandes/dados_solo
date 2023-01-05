@@ -17,7 +17,7 @@ library(GFD)
 
 for (col in 4:ncol(df)) {
   if (col == 4) {
-    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"] * df[,"Coleta"])
+    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"] * df[,"Coleta"], main=paste(names(df)[col]))
     print(paste(names(df)[col]))
     print(kruskal.test(df[,col]~df[,"Áreas"]))
     print(kruskal.test(df[,col]~df[,"Prof"]))
@@ -26,7 +26,7 @@ for (col in 4:ncol(df)) {
     print(wilcox.test(df[,col]~df[,"Coleta"]))
     print(GFD(df[,col] ~ df[,"Áreas"] * df[,"Prof"] * df[,"Coleta"]))
   } else {
-    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"])
+    boxplot(df[,col] ~ df[,"Áreas"] * df[,"Prof"], main=paste(names(df)[col]))
     print(paste(names(df)[col]))
     print(kruskal.test(df[,col]~df[,"Áreas"]))
     print(kruskal.test(df[,col]~df[,"Prof"]))
@@ -35,3 +35,19 @@ for (col in 4:ncol(df)) {
   }
 }
 
+fatorial <- function(x) {
+  if (x == 0 || x == 1) {
+    return(1)
+  } else {
+    return(x * fatorial(x-1))
+  }
+}
+
+fatorial <- function(x) {
+  x <- x-1
+  v <- x:1
+  for (i in v) {
+    x <- x * i
+  }
+  return(x)
+}
